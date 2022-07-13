@@ -20,6 +20,35 @@ DAM_Config:
 |_payload.yaml
 ```
 
+### 已知BUG
+
+第三层不能同名，这样通过 JSP 获取内容就会出错，只会获取到最后一个 冰蝎3 的 JSP
+
+```yaml
+WebShell:
+  哥斯拉:
+    JSP:
+      dGVzdA==
+  冰蝎3:
+    JSP:
+      MTIz
+```
+
+建议修改为
+
+```yaml
+WebShell:
+  哥斯拉:
+    哥斯拉-JSP:
+      dGVzdA==
+  冰蝎3:
+    冰蝎3-JSP:
+      MTIz
+```
+
+这样就可以获取到相对的内容。
+
+
 
 
 #### payload.yaml 文件：演示
