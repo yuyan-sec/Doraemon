@@ -20,6 +20,12 @@ DAM_Config:
 |_payload.yaml
 ```
 
+### 更新日志
+1.0.2 版本添加了一个 GUI 方便查看 漏洞 和 Payload
+
+![3](./images/3.png)
+
+
 ### 已知BUG
 
 第三层不能同名，这样通过 JSP 获取内容就会出错，只会获取到最后一个 冰蝎3 的 JSP
