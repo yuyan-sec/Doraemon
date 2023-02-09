@@ -115,7 +115,7 @@ https://www.baidu.com/index.php
 #### 1.0.3.1
 
 1. 感谢 [alex123-2star](https://github.com/alex123-2star) 师傅提交的代码：优化 Mac 快捷启动 和 请求处理（{domain}  {target} ）
-2. 优先访问当前程序目录 DAM 目录下的文件（不会创建），其次才访问 `/用户根目录/.config/DAM/` 下的文件
+2. 如果当前 BurpSuite 目录存在 **DAM 目录和文件 **就会优先访问，但是**不会创建**。其次才访问 `/用户根目录/.config/DAM/` 下的文件（会创建目录和配置文件）
 
 
 
