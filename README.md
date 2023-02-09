@@ -12,7 +12,9 @@
 
 1、加载插件初始化的配置文件会放在的`/用户根目录/.config/DAM/`目录下。
 
-2、**使用 vscode 来修改 exp.yaml ， payload.yaml 和 tools.yaml** （**yaml 语法**）
+2、如果当前 BurpSuite 目录存在 **DAM 目录和文件 **就会优先访问，但是**不会创建**。（[方便迁移](https://github.com/yuyan-sec/Doraemon/issues/7)）
+
+3、**使用 vscode 来修改 exp.yaml ， payload.yaml 和 tools.yaml** （**yaml 语法**）
 
 ```
 DAM:
@@ -98,13 +100,24 @@ ffuf2: ffuf.exe -w dict.txt -request {request} -request-proto http -mode cluster
 
 **配置**
 
-- {request}表示使用请求包
-- {url}表示使用当前的url
-- {host}表示使用当前的host
+https://www.baidu.com/index.php
+
+- {request} 表示使用请求包
+- {url} : https://www.baidu.com/index.php
+- {host} : www.baidu.com
+- {domain} :  baidu.com
+- {target} :  https://www.baidu.com
 
 
 
 ### 更新日志
+
+#### 1.0.3.1
+
+1. 感谢 [alex123-2star](https://github.com/alex123-2star) 师傅提交的代码：优化 Mac 快捷启动 和 请求处理（{domain}  {target} ）
+2. 优先访问当前程序目录 DAM 目录下的文件（不会创建），其次才访问 `/用户根目录/.config/DAM/` 下的文件
+
+
 
 #### 1.0.3
 
