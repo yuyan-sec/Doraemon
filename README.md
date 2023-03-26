@@ -91,11 +91,13 @@ UE9TVCAvZ3Vlc3RfYXV0aC9ndWVzdElzVXAucGhwIEhUVFAvMS4xIApIb3N0OiAlcwpDb25uZWN0aW9u
 可以直接在GUI直接新增和删除，也可以手动添加
 
 ```
-ping: ping -nc 1 {host}
+Tools:
+- [test, '{request}']
+- [test2, '{url}']
+- [test3, '{host}']
+- [test4, '{domain}']
+- [test5, '{target}']
 
-ffuf: ffuf.exe -w dict.txt -u {url}/FUZZ
-
-ffuf2: ffuf.exe -w dict.txt -request {request} -request-proto http -mode clusterbomb
 ```
 
 **配置**
@@ -111,46 +113,6 @@ https://www.baidu.com/index.php
 
 
 ### 更新日志
-
-#### 1.0.5
-
-添加了一些应用的解密：
-
-```
-用友NC解密：
-https://github.com/jas502n/ncDecode
-
-致远-帆软解密：
-https://github.com/Rvn0xsy/PassDecode-jar
-
-蓝凌OA解密：
-https://github.com/yuanhaiGreg/LandrayExploit
-
-Drcom 解密：
-https://blog.csdn.net/x_iya/article/details/69672339
-
-正方解密：
-https://github.com/szad670401/zfexp/
-
-FinalShell解密：
-https://github.com/jas502n/FinalShellDecodePass
-
-IMC数据库解密：
-https://www.t00ls.com/thread-66252-1-1.html
-
-OpenFire 管理后台账号密码解密:
-https://github.com/jas502n/OpenFire_Decrypt
-```
-
-
-
-![](images/8.png)
-
-#### 1.0.4
-
-添加了一些反弹shell的命令
-
-![](/images/7.png)
 
 #### 1.0.3.1
 
