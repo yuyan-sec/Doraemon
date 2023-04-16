@@ -114,6 +114,12 @@ https://www.baidu.com/index.php
 
 ### 更新日志
 
+#### 1.0.4
+
+新增随机生成信息：https://github.com/smxiazi/xia_Liao
+
+![](./images/7.png)
+
 #### 1.0.3.1
 
 1. 感谢 [alex123-2star](https://github.com/alex123-2star) 师傅提交的代码：优化 Mac 快捷启动 和 请求处理（{domain}  {target} ）
