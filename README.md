@@ -10,18 +10,15 @@
 
 ### 使用
 
-1、加载插件初始化的配置文件会放在的`/用户根目录/.config/DAM/`目录下。
+1、下载压缩包，修改DAM目录下的文件
 
-2、如果当前 BurpSuite 目录存在 **DAM 目录和文件 **就会优先访问，但是**不会创建**。（[方便迁移](https://github.com/yuyan-sec/Doraemon/issues/7)）
-
-3、**使用 vscode 来修改 exp.yaml ， payload.yaml 和 tools.yaml** （**yaml 语法**）
+2、**使用 vscode 来修改 exp.yaml ， payload.yaml 和 tools.yaml** （**yaml 语法**）
 
 ```
 DAM:
 |_exp.yaml
 |_payload.yaml
 |_tools.yaml
-|_temp.req (单独启动的时候用来保存 request 请求)
 ```
 
 
@@ -114,6 +111,12 @@ https://www.baidu.com/index.php
 
 ### 更新日志
 
+#### 1.0.5
+
+感谢 "**咖啡**" 师傅的建议：修改原来的配置文件位置，直接把配置和jar包打包在一个目录。参考：https://github.com/pmiaowu/BurpShiroPassiveScan
+
+
+
 #### 1.0.4
 
 新增随机生成信息：https://github.com/smxiazi/xia_Liao
@@ -149,9 +152,7 @@ https://github.com/kN6jq/gather
 
 ![3](./images/3.png)
 
-也可以单独运行，其他功能还没写
 
-![4](./images/4.png)
 
 
 ### 已知BUG
