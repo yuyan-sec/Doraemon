@@ -92,6 +92,12 @@ https://www.baidu.com/index.php
 
 ### 更新日志
 
+#### 1.0.6
+
+使用目录和文件来区分目录的层级，漏洞或payload直接保存在文件来引用。
+
+
+
 #### 1.0.5
 
 感谢 "**咖啡**" 师傅的建议：修改原来的配置文件位置，直接把配置和jar包打包在一个目录。参考：https://github.com/pmiaowu/BurpShiroPassiveScan
