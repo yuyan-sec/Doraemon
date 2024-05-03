@@ -92,9 +92,6 @@ https://www.baidu.com/index.php
 
 ### 更新日志
 
-#### 1.0.7
-
-添加了 iconhash：Fofa, Hunter, 360Quake, Zoomeye, Shodan
 
 
 
