@@ -13,11 +13,11 @@
 下载压缩包，修改DAM目录下的目录或文件
 
 - Exp 目录（不能修改目录名）是漏洞相关的，会**修改整个数据包**
-
 - Payload 目录（不能修改目录名），把 **Payload 插入到数据包中**
-
 - `{{Host}}`  或 `{{Hostname}}` 自动获取相关的 Host
 - `{{Cookie}}`  获取Cookie
+- `{{url}}` 获取URL
+- 在 exp 数据包开头可以使用 `/* 来注释内容 */` 
 
 
 
@@ -41,6 +41,10 @@
 漏洞1：把漏洞的数据包保存为文件，修改相关的 Host ,Cookie。
 
 ```http
+/*
+内存马：xxxxx
+请求头：xxxxx
+*/
 GET / HTTP/1.1
 Host: {{Host}}
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.68
@@ -52,9 +56,11 @@ Connection: close
 
 
 
-
-
 ![](./images/1.png)
+
+注释的内容直接显示
+
+![](./images/3.png)
 
 
 
@@ -90,60 +96,13 @@ https://www.baidu.com/index.php
 
 
 
-### 更新日志
-
-
-
-
-#### 1.0.6
-
-使用目录和文件来区分目录的层级，漏洞或payload直接保存在文件来引用。
-
-
-
-#### 1.0.5
-
-感谢 "**咖啡**" 师傅的建议：修改原来的配置文件位置，直接把配置和jar包打包在一个目录。参考：https://github.com/pmiaowu/BurpShiroPassiveScan
-
-
-
-#### 1.0.4
-
-新增随机生成信息：https://github.com/smxiazi/xia_Liao
-
-
-
-#### 1.0.3.1
-
-1. 感谢 [alex123-2star](https://github.com/alex123-2star) 师傅提交的代码：优化 Mac 快捷启动 和 请求处理（{domain}  {target} ）
-2. 如果当前 BurpSuite 目录存在 **DAM 目录和文件 **就会优先访问，但是**不会创建**。其次才访问 `/用户根目录/.config/DAM/` 下的文件（会创建目录和配置文件）
-
-
-
-#### 1.0.3
-
-1.0.3 版本所有配置都放在了`/用户根目录/.config/DAM/`，新增了一个快捷启动工具的功能，可以通过设置工具的路径和命令进行快捷启动。Linux 系统需要安装 `gnome-terminal` ，mac 没测试。
-
-该功能主要抄的工具：
-
-https://github.com/bit4woo/knife
-
-https://github.com/kN6jq/gather
-
-
-
-#### 1.0.2
-
-1.0.2 版本添加了一个 GUI 方便查看 漏洞 和 Payload
-
-
-
 ### 参考
 
 本工具基于大量优秀文章和工具才得以~~编写~~ 抄写完成，非常感谢这些无私的分享者！
 
-https://github.com/d3vilbug/HackBar
+- https://github.com/bit4woo/burp-api-drops
+- https://github.com/bit4woo/knife
+- https://github.com/d3vilbug/HackBar
 
-https://github.com/bit4woo/knife
+- https://github.com/kN6jq/gather
 
-https://github.com/kN6jq/gather
